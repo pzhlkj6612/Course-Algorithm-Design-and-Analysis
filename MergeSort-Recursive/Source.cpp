@@ -45,35 +45,39 @@ void Merge(Type arr[], int L, int M, int R) {
 	}
 
 	//print each step
+	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
 	std::cout << stepNum++ << ":\t";
 	for (int i = 0; i < length; i++) {
+		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 		if (i >= last_range_head && i <= last_range_tail) {
-			;													GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-			if (L > last_range_tail || R < last_range_head) {
-				;												SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-			}
-			else {
-				;												SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
-			}
-			if (arr[i] > 0) std::cout << " " << arr[i] << "\t";
-			else 			std::cout << arr[i] << "\t";
-			;													SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
+			if (L > last_range_tail || R < last_range_head)
+				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
+			else
+				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+			if (arr[i] > 0)
+				std::cout << " " << arr[i] << "\t";
+			else
+				std::cout << arr[i] << "\t";
 			continue;
 		}
 		if (i >= L && i <= R) {
-			;													GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-			;													SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
-			if (arr[i] > 0) std::cout << " " << arr[i] << "\t";
-			else 			std::cout << arr[i] << "\t";
-			;													SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
+			SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+			if (arr[i] > 0)
+				std::cout << " " << arr[i] << "\t";
+			else
+				std::cout << arr[i] << "\t";
 			continue;
 		}
-		if (arr[i] > 0) 	std::cout << " " << arr[i] << "\t";
-		else 				std::cout << arr[i] << "\t";
+		if (arr[i] > 0)
+			std::cout << " " << arr[i] << "\t";
+		else
+			std::cout << arr[i] << "\t";
 	}
 	std::cout << std::endl;
 	last_range_head = L;
 	last_range_tail = R;
+	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+
 	//for (int i = L; i <= R; i++) {
 	//	std::cout << arr[i] << " ";
 	//}
