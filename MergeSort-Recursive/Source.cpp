@@ -16,7 +16,7 @@ int last_range_tail = -1;
 
 template<class Type>
 void Merge(Type arr[], int L, int M, int R) {
-	Sleep(1000);
+	Sleep(500);
 	int LEFT_SIZE = M - L + 1;
 	int RIGHT_SIZE = R - (M + 1) + 1;//M + 1, do you know why I do it?
 	int *left = new int[LEFT_SIZE];
@@ -48,23 +48,28 @@ void Merge(Type arr[], int L, int M, int R) {
 	std::cout << stepNum++ << ":\t";
 	for (int i = 0; i < length; i++) {
 		if (i >= last_range_head && i <= last_range_tail) {
-			GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-			if (L > last_range_tail || R < last_range_head)
-				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
-			else
-				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
-			std::cout << arr[i] << "\t";
-			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
+			;													GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
+			if (L > last_range_tail || R < last_range_head) {
+				;												SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);
+			}
+			else {
+				;												SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
+			}
+			if (arr[i] > 0) std::cout << " " << arr[i] << "\t";
+			else 			std::cout << arr[i] << "\t";
+			;													SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
 			continue;
 		}
 		if (i >= L && i <= R) {
-			GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-			SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
-			std::cout << arr[i] << "\t";
-			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
+			;													GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
+			;													SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);
+			if (arr[i] > 0) std::cout << " " << arr[i] << "\t";
+			else 			std::cout << arr[i] << "\t";
+			;													SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
 			continue;
 		}
-		std::cout << arr[i] << "\t";
+		if (arr[i] > 0) 	std::cout << " " << arr[i] << "\t";
+		else 				std::cout << arr[i] << "\t";
 	}
 	std::cout << std::endl;
 	last_range_head = L;
@@ -93,7 +98,7 @@ void MergeSort(Type arr[], int L, int R) {
 	0,1,2,3,4,5,6		7 numbers, M = 1/2 * (0 + 6) = 3, Left = {0,1,2,3},		Right = {4,5,6}
 
 	We can find that Right team's first index must equal to M + 1.
-	And, the length of each team is (R - L + 1), so I will do "add 1" in Merge() necessary.
+	And, the length of each team is (R - L + 1), so I will do "add 1" in Merge() necessarily.
 	*/
 }
 
