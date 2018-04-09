@@ -16,7 +16,6 @@ int last_range_tail = -1;
 
 template<class Type>
 void Merge(Type arr[], int L, int M, int R) {
-	Sleep(500);
 	int LEFT_SIZE = M - L + 1;
 	int RIGHT_SIZE = R - (M + 1) + 1;//M + 1, do you know why I do it?
 	int *left = new int[LEFT_SIZE];
@@ -54,24 +53,15 @@ void Merge(Type arr[], int L, int M, int R) {
 				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
 			else
 				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
-			if (arr[i] > 0)
-				std::cout << " " << arr[i] << "\t";
-			else
-				std::cout << arr[i] << "\t";
+			std::cout << arr[i] << "\t";
 			continue;
 		}
 		if (i >= L && i <= R) {
 			SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
-			if (arr[i] > 0)
-				std::cout << " " << arr[i] << "\t";
-			else
-				std::cout << arr[i] << "\t";
+			std::cout << arr[i] << "\t";
 			continue;
 		}
-		if (arr[i] > 0)
-			std::cout << " " << arr[i] << "\t";
-		else
-			std::cout << arr[i] << "\t";
+		std::cout << arr[i] << "\t";
 	}
 	std::cout << std::endl;
 	last_range_head = L;
@@ -82,6 +72,12 @@ void Merge(Type arr[], int L, int M, int R) {
 	//	std::cout << arr[i] << " ";
 	//}
 	//std::cout << std::endl;
+
+	system("pause>NUL");//system("pause");
+
+	//clear some lines
+	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0, defaultOutInfo.dwCursorPosition.Y });
 }
 
 template<class Type>
@@ -115,10 +111,12 @@ int main(void) {
 		mod *= mod_basic;
 	}
 
+	std::cout << "In:\t";
 	for (int i = 0; i < length; i++) {
 		s[i] = rand()*rand()*rand() % mod;
-		std::cout << s[i] << ", ";
+		std::cout << s[i] << "\t";
 	}
+
 	std::cout << std::endl;
 	for (int i = 0; i < length; i++) {
 		std::cout << "------";
@@ -131,9 +129,15 @@ int main(void) {
 		std::cout << "------";
 	}
 	std::cout << std::endl;
+
+	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+	std::cout << "Out:\t";
+	SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
 	for (int i = 0; i < length; i++) {
-		std::cout << s[i] << ", ";
+		std::cout << s[i] << "\t";
 	}
+	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 	std::cout << std::endl;
+
 	system("pause >NUL");
 }
