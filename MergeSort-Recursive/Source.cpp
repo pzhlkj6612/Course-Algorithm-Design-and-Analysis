@@ -76,8 +76,8 @@ void Merge(Type arr[], int L, int M, int R) {
 	system("pause>NUL");//system("pause");
 
 	//clear some lines
-	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0, defaultOutInfo.dwCursorPosition.Y });
+	//GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
+	//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0, defaultOutInfo.dwCursorPosition.Y });
 }
 
 template<class Type>
