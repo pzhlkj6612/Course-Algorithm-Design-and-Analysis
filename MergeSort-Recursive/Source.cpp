@@ -44,6 +44,8 @@ void Merge(Type arr[], int L, int M, int R) {
 	}
 
 	//print each step
+	system("pause>NUL");
+
 	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
 	std::cout << stepNum++ << ":\t";
 	for (int i = 0; i < length; i++) {
@@ -63,21 +65,15 @@ void Merge(Type arr[], int L, int M, int R) {
 		}
 		std::cout << arr[i] << "\t";
 	}
+	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 	std::cout << std::endl;
 	last_range_head = L;
 	last_range_tail = R;
-	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 
 	//for (int i = L; i <= R; i++) {
 	//	std::cout << arr[i] << " ";
 	//}
 	//std::cout << std::endl;
-
-	system("pause>NUL");//system("pause");
-
-	//clear some lines
-	//GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
-	//SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), { 0, defaultOutInfo.dwCursorPosition.Y });
 }
 
 template<class Type>
