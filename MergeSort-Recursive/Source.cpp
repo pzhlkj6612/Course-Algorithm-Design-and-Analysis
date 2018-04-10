@@ -43,37 +43,35 @@ void Merge(Type arr[], int L, int M, int R) {
 		arr[k++] = right[j++];
 	}
 
-	//print each step
 	system("pause>NUL");
 
-	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
-	std::cout << stepNum++ << ":\t";
-	for (int i = 0; i < length; i++) {
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
-		if (i >= last_range_head && i <= last_range_tail) {
-			if (L > last_range_tail || R < last_range_head)
-				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
-			else
+	//print each step
+	{
+		GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
+		std::cout << stepNum++ << ":\t";
+		for (int i = 0; i < length; i++) {
+			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+			if (i >= last_range_head && i <= last_range_tail) {
+				if (L > last_range_tail || R < last_range_head)
+					SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
+				else
+					SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+				std::cout << arr[i] << "\t";
+				continue;
+			}
+			if (i >= L && i <= R) {
 				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+				std::cout << arr[i] << "\t";
+				continue;
+			}
 			std::cout << arr[i] << "\t";
-			continue;
 		}
-		if (i >= L && i <= R) {
-			SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
-			std::cout << arr[i] << "\t";
-			continue;
-		}
-		std::cout << arr[i] << "\t";
-	}
-	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
-	std::cout << std::endl;
-	last_range_head = L;
-	last_range_tail = R;
+		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		std::cout << std::endl;
 
-	//for (int i = L; i <= R; i++) {
-	//	std::cout << arr[i] << " ";
-	//}
-	//std::cout << std::endl;
+		last_range_head = L;
+		last_range_tail = R;
+	}
 }
 
 template<class Type>
@@ -107,33 +105,40 @@ int main(void) {
 		mod *= mod_basic;
 	}
 
-	std::cout << "In:\t";
 	for (int i = 0; i < length; i++) {
 		s[i] = rand()*rand()*rand() % mod;
-		std::cout << s[i] << "\t";
 	}
 
-	std::cout << std::endl;
-	for (int i = 0; i < length; i++) {
-		std::cout << "------";
+	{
+		std::cout << "In:\t";
+		for (int i = 0; i < length; i++) {
+			std::cout << s[i] << "\t";
+		}
+
+		std::cout << std::endl;
+		for (int i = 0; i < length; i++) {
+			std::cout << "------";
+		}
+		std::cout << std::endl;
 	}
-	std::cout << std::endl;
 
 	MergeSort(s, 0, length - 1);
 
-	for (int i = 0; i < length; i++) {
-		std::cout << "------";
-	}
-	std::cout << std::endl;
+	{
+		for (int i = 0; i < length; i++) {
+			std::cout << "------";
+		}
+		std::cout << std::endl;
 
-	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
-	std::cout << "Out:\t";
-	SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
-	for (int i = 0; i < length; i++) {
-		std::cout << s[i] << "\t";
+		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		std::cout << "Out:\t";
+		SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
+		for (int i = 0; i < length; i++) {
+			std::cout << s[i] << "\t";
+		}
+		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		std::cout << std::endl;
 	}
-	SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
-	std::cout << std::endl;
 
 	system("pause >NUL");
 }
