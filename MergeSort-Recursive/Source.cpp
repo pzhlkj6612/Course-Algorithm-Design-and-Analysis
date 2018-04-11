@@ -11,11 +11,26 @@ int stepNum = 0;
 int length = 10;
 int max_number_of_digits = 2;
 
-int last_range_head = -1;
-int last_range_tail = -1;
-
 template<class Type>
 void Merge(Type arr[], int L, int M, int R) {
+
+	//print status before each step
+	{
+		GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
+		std::cout << stepNum++ << ":\t";
+		for (int i = 0; i < length; i++) {
+			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+			if (i >= L && i <= R) {
+				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+				std::cout << arr[i] << "\t";
+				continue;
+			}
+			std::cout << arr[i] << "\t";
+		}
+		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		std::cout << std::endl;
+	}
+
 	int LEFT_SIZE = M - L + 1;
 	int RIGHT_SIZE = R - (M + 1) + 1;//M + 1, do you know why I do it?
 	int *left = new int[LEFT_SIZE];
@@ -43,24 +58,14 @@ void Merge(Type arr[], int L, int M, int R) {
 		arr[k++] = right[j++];
 	}
 
-	system("pause>NUL");
-
-	//print each step
+	//print status after each step
 	{
 		GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
-		std::cout << stepNum++ << ":\t";
+		std::cout << " " << "\t";
 		for (int i = 0; i < length; i++) {
 			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
-			if (i >= last_range_head && i <= last_range_tail) {
-				if (L > last_range_tail || R < last_range_head)
-					SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
-				else
-					SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
-				std::cout << arr[i] << "\t";
-				continue;
-			}
 			if (i >= L && i <= R) {
-				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
+				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Red text
 				std::cout << arr[i] << "\t";
 				continue;
 			}
@@ -68,10 +73,9 @@ void Merge(Type arr[], int L, int M, int R) {
 		}
 		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 		std::cout << std::endl;
-
-		last_range_head = L;
-		last_range_tail = R;
 	}
+
+	system("pause>NUL");
 }
 
 template<class Type>
@@ -122,6 +126,8 @@ int main(void) {
 		std::cout << std::endl;
 	}
 
+	system("pause>NUL");
+
 	MergeSort(s, 0, length - 1);
 
 	{
@@ -130,13 +136,10 @@ int main(void) {
 		}
 		std::cout << std::endl;
 
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 		std::cout << "Out:\t";
-		SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Green text
 		for (int i = 0; i < length; i++) {
 			std::cout << s[i] << "\t";
 		}
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
 		std::cout << std::endl;
 	}
 
