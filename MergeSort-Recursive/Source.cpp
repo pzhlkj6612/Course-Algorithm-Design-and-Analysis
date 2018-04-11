@@ -33,8 +33,8 @@ void Merge(Type arr[], int L, int M, int R) {
 
 	int LEFT_SIZE = M - L + 1;
 	int RIGHT_SIZE = R - (M + 1) + 1;//M + 1, do you know why I do it?
-	int *left = new int[LEFT_SIZE];
-	int *right = new int[RIGHT_SIZE];
+	Type *left = new Type[LEFT_SIZE];
+	Type *right = new Type[RIGHT_SIZE];
 
 	for (int i = L; i <= M; i++) {
 		left[i - L] = arr[i];
