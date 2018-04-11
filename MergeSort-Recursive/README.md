@@ -9,3 +9,7 @@
 20180409:
 
 ![](Res4GitHub/20180409_MergeSort-Recursive.gif?raw=true)
+
+20180411:
+
+![](Res4GitHub/20180411_MergeSort-Recursive.gif?raw=true)
