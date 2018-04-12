@@ -12,7 +12,7 @@ int length = 10;
 int max_number_of_digits = 2;
 
 template<class Type>
-void Merge(Type arr[], int L, int M, int R) {
+void SplitAndSort(Type arr[], int L, int M, int R) {
 
 	//print status before each step
 	{
@@ -85,7 +85,7 @@ void MergeSort(Type arr[], int L, int R) {
 	int M = (L + R) / 2;
 	MergeSort(arr, L, M);
 	MergeSort(arr, M + 1, R);
-	Merge(arr, L, M, R);//
+	SplitAndSort(arr, L, M, R);//
 	/*
 	Merge():
 
