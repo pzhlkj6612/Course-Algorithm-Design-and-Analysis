@@ -5,7 +5,7 @@
 
 
 HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-CONSOLE_SCREEN_BUFFER_INFO defaultOutInfo;
+CONSOLE_SCREEN_BUFFER_INFO csbi;
 
 int stepNum = 0;
 int length = 10;
@@ -16,10 +16,10 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 
 	//print status before each step
 	{
-		GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
+		GetConsoleScreenBufferInfo(hOut, &csbi);//Get current (default) color
 		std::cout << stepNum++ << ":\t";
 		for (int i = 0; i < length; i++) {
-			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+			SetConsoleTextAttribute(hOut, csbi.wAttributes);//Reset color
 			if (i >= L && i <= R) {
 				SetConsoleTextAttribute(hOut, FOREGROUND_RED | FOREGROUND_INTENSITY);//Red text
 				std::cout << arr[i] << "\t";
@@ -27,7 +27,7 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 			}
 			std::cout << arr[i] << "\t";
 		}
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		SetConsoleTextAttribute(hOut, csbi.wAttributes);//Reset color
 		std::cout << std::endl;
 	}
 
@@ -60,10 +60,10 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 
 	//print status after each step
 	{
-		GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);//Get current (default) color
+		GetConsoleScreenBufferInfo(hOut, &csbi);//Get current (default) color
 		std::cout << " " << "\t";
 		for (int i = 0; i < length; i++) {
-			SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+			SetConsoleTextAttribute(hOut, csbi.wAttributes);//Reset color
 			if (i >= L && i <= R) {
 				SetConsoleTextAttribute(hOut, FOREGROUND_GREEN | FOREGROUND_INTENSITY);//Red text
 				std::cout << arr[i] << "\t";
@@ -71,7 +71,7 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 			}
 			std::cout << arr[i] << "\t";
 		}
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);//Reset color
+		SetConsoleTextAttribute(hOut, csbi.wAttributes);//Reset color
 		std::cout << std::endl;
 	}
 

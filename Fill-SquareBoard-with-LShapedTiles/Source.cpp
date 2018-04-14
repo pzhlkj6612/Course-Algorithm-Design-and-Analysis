@@ -58,10 +58,10 @@ void ChessBoard(int row, int column, int Srow, int Scolumn, int size) {
 }
 
 HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
-CONSOLE_SCREEN_BUFFER_INFO defaultOutInfo;
+CONSOLE_SCREEN_BUFFER_INFO csbi;
 
 void OutColorfulBlock(int num) {
-	GetConsoleScreenBufferInfo(hOut, &defaultOutInfo);
+	GetConsoleScreenBufferInfo(hOut, &csbi);
 	if (num == 0) {
 		std::cout << "  ";
 	}
@@ -83,7 +83,7 @@ void OutColorfulBlock(int num) {
 		case(13): {SetConsoleTextAttribute(hOut, BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY); break; }
 		}//I don't have enough color :(
 		std::cout << "  ";
-		SetConsoleTextAttribute(hOut, defaultOutInfo.wAttributes);
+		SetConsoleTextAttribute(hOut, csbi.wAttributes);
 	}
 }
 
