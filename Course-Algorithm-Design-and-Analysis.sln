@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MergeSort-NonRecursive", "M
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "QuickSort-2", "QuickSort-2\QuickSort-2.vcxproj", "{08C1E8A1-2B82-41B8-BE30-6FC39640A58F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Longest-Increasing-Substring-DP-Not-Really", "Longest-Increasing-Substring-DP-Not-Really\Longest-Increasing-Substring-DP-Not-Really.vcxproj", "{9681CFEB-4190-4754-A186-1E6186111A12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{08C1E8A1-2B82-41B8-BE30-6FC39640A58F}.Release|x64.Build.0 = Release|x64
 		{08C1E8A1-2B82-41B8-BE30-6FC39640A58F}.Release|x86.ActiveCfg = Release|Win32
 		{08C1E8A1-2B82-41B8-BE30-6FC39640A58F}.Release|x86.Build.0 = Release|Win32
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Debug|x64.ActiveCfg = Debug|x64
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Debug|x64.Build.0 = Debug|x64
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Debug|x86.ActiveCfg = Debug|Win32
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Debug|x86.Build.0 = Debug|Win32
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Release|x64.ActiveCfg = Release|x64
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Release|x64.Build.0 = Release|x64
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Release|x86.ActiveCfg = Release|Win32
+		{9681CFEB-4190-4754-A186-1E6186111A12}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
