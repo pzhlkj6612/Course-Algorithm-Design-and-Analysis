@@ -221,20 +221,26 @@ int main(void) {
 
 /* Python 2
 
+Hightlighted:
+http://pygments.org/demo/6738649/
+
+Run online:
+https://repl.it/repls/UnfortunateEnormousExecutables <- is permanent?
+
 def Find(arr):
-counter = 1
-recordArr = [1] * len(arr)
-for i in range(len(arr) - 1):
-if arr[i] + 1 == arr[i + 1]:
-recordArr[i] += counter
-counter += 1
-else:
-counter = 1
-longest = 1
-for record in recordArr:
-if record > longest:
-longest = record
-return longest
+	counter = 1
+	recordArr = [1] * len(arr)
+	for i in range(len(arr) - 1):
+		if arr[i] + 1 == arr[i + 1]:
+			recordArr[i] += counter
+			counter += 1
+		else:
+			counter = 1
+			longest = 1
+	for record in recordArr:
+		if record > longest:
+			longest = record
+	return longest
 
 arr = [4, 1, 2, 3, 4, 3, 2, 4, 1, 2, 3, 4]
 print Find(arr)
