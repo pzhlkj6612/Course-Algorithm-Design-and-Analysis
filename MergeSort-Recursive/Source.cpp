@@ -10,8 +10,7 @@ int stepNum = 0;
 int length = 10;
 int max_number_of_digits = 2;
 
-template<class Type>
-void SplitAndSort(Type arr[], int L, int M, int R) {
+void SplitAndSort(int arr[], int L, int M, int R) {
 
 	//print status before each step
 	{
@@ -32,8 +31,8 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 
 	int LEFT_SIZE = M - L + 1;
 	int RIGHT_SIZE = R - (M + 1) + 1;//M + 1, do you know why I do it?
-	Type *left = new Type[LEFT_SIZE];
-	Type *right = new Type[RIGHT_SIZE];
+	int *left = new int[LEFT_SIZE];
+	int *right = new int[RIGHT_SIZE];
 
 	for (int i = L; i <= M; i++) {
 		left[i - L] = arr[i];
@@ -77,8 +76,7 @@ void SplitAndSort(Type arr[], int L, int M, int R) {
 	system("pause>NUL");
 }
 
-template<class Type>
-void MergeSort(Type arr[], int L, int R) {
+void MergeSort(int arr[], int L, int R) {
 	if (L == R)
 		return;
 	int M = (L + R) / 2;
