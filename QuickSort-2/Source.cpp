@@ -54,7 +54,7 @@ void OutStandHead() {
 
 int sortTime = 0;
 
-template<class Type> void OutSortInfo(Type key) {
+void OutSortInfo(int key) {
 	sortTime++;
 	OutStandHead();
 	std::cout << "Key = " << key << "  -  " << "Sort func time: " << sortTime << std::endl;
@@ -64,7 +64,7 @@ template<class Type> void OutSortInfo(Type key) {
 
 int length = 8;
 
-template<class Type> void OutArray(Type arr[]) {
+void OutArray(int arr[]) {
 	OutStandHead();
 	for (int ii = 0; ii < length; ii++) {
 		std::cout << arr[ii] << "\t";
@@ -72,9 +72,9 @@ template<class Type> void OutArray(Type arr[]) {
 	std::cout << std::endl;
 }
 //Unused
-template<class Type> void OutArrayWithKey(Type arr[], Type key) {
+void OutArrayWithKey(int arr[], int key) {
 	std::cout << "<" << key << ">";
-	OutArray();
+	OutArray(arr);
 }
 
 
