@@ -15,6 +15,6 @@ More practice, more skills.
 
 20180401: [MergeSort-Recursive](/MergeSort-Recursive)
 
-20180412: [MergeSort-NonRecursive](/MergeSort-NonRecursive)
+20180412: [~~MergeSort-NonRecursive~~](/MergeSort-NonRecursive) <- Need fix
 
 20180414: [QuickSort-2](/QuickSort-2)
