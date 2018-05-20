@@ -8,7 +8,7 @@ CONSOLE_SCREEN_BUFFER_INFO csbi;
 
 int stepNum = 0;
 const int length = 10;
-const int max_number_of_digits = 2;
+int max_number_of_digits = 2;
 
 void SplitAndSort(int arr[], int L, int M, int R) {
 
