@@ -7,7 +7,7 @@ HANDLE hOut = GetStdHandle(STD_OUTPUT_HANDLE);
 CONSOLE_SCREEN_BUFFER_INFO csbi;
 
 int stepNum = 0;
-int length = 8;
+int length = 8;//1,2,3,4,11,13...
 
 void SplitAndSort(int arr[], int L, int R) {
 
@@ -83,11 +83,11 @@ void MergeSort(int arr[], int n) {
 	int currentHead, currentFoot = 0;
 	int processLength = 1;
 
-	while (processLength <= n) {
+	while (processLength < n) {
 		processLength *= 2;
 		currentHead = 0;//Start from scratch
 
-		while (currentHead < n) {
+		while (currentHead < n - 1) {//...
 			currentFoot = currentHead + processLength - 1;
 			SplitAndSort(arr, currentHead, currentFoot);
 			currentHead = currentFoot + 1;
@@ -118,7 +118,7 @@ int main(void) {
 
 	system("pause>NUL");
 
-	MergeSort(arr, length - 1);
+	MergeSort(arr, length);
 
 	{
 		for (int i = 0; i < length; i++) {
