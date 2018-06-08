@@ -18,3 +18,5 @@ More practice, more skills.
 20180412: [~~MergeSort-NonRecursive~~](/MergeSort-NonRecursive) <- Need fix
 
 20180414: [QuickSort-2](/QuickSort-2)
+
+20180505: [Longest-Increasing-Substring-DP-Not-Really](/Longest-Increasing-Substring-DP-Not-Really)
